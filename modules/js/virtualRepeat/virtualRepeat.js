@@ -87,7 +87,7 @@ var MAX_ELEMENT_SIZE = 1533917;
 var NUM_EXTRA = 3;
 
 /** ngInject */
-function VirtualRepeatContainerController($$rAF, $parse, $window, $scope, $element, $attrs) {
+function VirtualRepeatContainerController($$rAF, $parse, $scope, $element, $attrs) {
   this.$scope = $scope;
   this.$element = $element;
   this.$attrs = $attrs;
@@ -135,22 +135,19 @@ function VirtualRepeatContainerController($$rAF, $parse, $window, $scope, $eleme
   this.sizer = this.scroller.getElementsByClassName('md-virtual-repeat-sizer')[0];
   this.offsetter = this.scroller.getElementsByClassName('md-virtual-repeat-offsetter')[0];
 
+  $$rAF(angular.bind(this, this.updateSize));
+
   // TODO: Come up with a more robust (But hopefully also quick!) way of
-  var boundUpdateSize = angular.bind(this, this.updateSize);
-
-  $$rAF(function() {
-    boundUpdateSize();
-
-    var jWindow = angular.element($window);
-    jWindow.on('resize', boundUpdateSize);
-    $scope.$on('$destroy', function() {
-      jWindow.off('resize', boundUpdateSize);
-    });
-
-    $scope.$on('$md-resize', boundUpdateSize);
-  });
+  // detecting that we're not visible.
+  if ($attrs.ngHide) {
+    $scope.$watch($attrs.ngHide, angular.bind(this, function(hidden) {
+      if (!hidden) {
+        $$rAF(angular.bind(this, this.updateSize));
+      }
+    }));
+  }
 }
-VirtualRepeatContainerController.$inject = ["$$rAF", "$parse", "$window", "$scope", "$element", "$attrs"];
+VirtualRepeatContainerController.$inject = ["$$rAF", "$parse", "$scope", "$element", "$attrs"];
 
 
 /** Called by the md-virtual-repeat inside of the container at startup. */
