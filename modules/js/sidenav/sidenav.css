@@ -7,9 +7,8 @@
 md-sidenav {
   box-sizing: border-box;
   position: absolute;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   z-index: 60;
   width: 304px;
   min-width: 304px;
@@ -21,7 +20,6 @@ md-sidenav {
   md-sidenav.md-closed {
     display: none; }
   md-sidenav.md-closed-add, md-sidenav.md-closed-remove {
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     transition: 0.2s ease-in all; }
@@ -29,7 +27,6 @@ md-sidenav {
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
   md-sidenav.md-locked-open-add, md-sidenav.md-locked-open-remove {
     position: static;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-transform: translate3d(0, 0, 0);
@@ -40,7 +37,6 @@ md-sidenav {
     max-width: 304px; }
   md-sidenav.md-locked-open, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-left, md-sidenav.md-locked-open.md-closed, md-sidenav.md-locked-open.md-closed.md-sidenav-right, md-sidenav.md-locked-open-remove.md-closed {
     position: static;
-    display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -webkit-transform: translate3d(0, 0, 0);

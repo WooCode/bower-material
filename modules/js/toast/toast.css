@@ -5,15 +5,13 @@
  * v1.0.0-rc4
  */
 md-toast {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   position: absolute;
   z-index: 105;
   box-sizing: border-box;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   min-height: 48px;
   padding-left: 24px;
   padding-right: 24px;

@@ -1537,7 +1537,7 @@
     var paneTop = elementRect.top - bodyRect.top;
     var paneLeft = elementRect.left - bodyRect.left;
 
-    var viewportTop = document.body.scrollTop;
+    var viewportTop = document.body.scrollTop + document.scrollingElement.scrollTop;
     var viewportBottom = viewportTop + this.$window.innerHeight;
 
     var viewportLeft = document.body.scrollLeft;
